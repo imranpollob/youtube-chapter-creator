@@ -33,6 +33,6 @@ for root, dirs, files in os.walk(d):
 
     for video in video_list:
         duration = video_duration(os.path.join(root, video))
-        total_time += duration
         print(f'{convert(total_time)} {video}')
         result.write(f'{convert(total_time)} {video}\n')
+        total_time += duration
