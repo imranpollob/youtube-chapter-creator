@@ -3,7 +3,7 @@ import os
 
 # Change this value
 directory = '/Users/imran/Documents/Tutorials/Python'
-
+# for windows replace \ with /  Ex: C:/Users/Pollob/Downloads/Video
 
 def convert(seconds):
     hours = seconds // 3600
