@@ -1,6 +1,9 @@
 import moviepy.editor
 import os
 
+# Change this value
+directory = '/Users/imran/Documents/Tutorials/Python'
+
 
 def convert(seconds):
     hours = seconds // 3600
@@ -16,12 +19,10 @@ def video_duration(file_dir):
     return int(video.duration)
 
 
-# d = '/Users/imran/Documents/Tutorials/Complete Python Developer in 2020 Zero to Mastery/6. Advanced Python Object Oriented Programming'
-d = '/Users/imran/Documents/Tutorials/Complete Python Developer in 2020 Zero to Mastery'
 result = open('result.txt', 'a')
 
 
-for root, dirs, files in os.walk(d):
+for root, dirs, files in os.walk(directory):
     print(f'----------------{root}')
     # print(f'----------------{dirs}')
     # print(f'----------------{files}')
