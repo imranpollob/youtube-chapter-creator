@@ -45,16 +45,14 @@ Easily create YouTube chapters for combined videos. This tool automatically gene
 
 ## Usage
 
-1. **Set the directory variable in `video.py` to the path where your videos are located.**
-
-2. **Run the script:**
+1. **Run the script:**
    ```bash
    python video.py
    ```
 
 3. **Follow the script prompts:**
    - Enter the directory path containing your video files.
-   - Provide a sample file name to help the script detect the numbering pattern.
+
 
 The script will generate a `result.txt` file with the YouTube chapters based on the video files in the specified directory.
 
