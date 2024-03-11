@@ -31,12 +31,16 @@ def extract_number(file_name):
     return None  # Default case if no number is found
 
 
+def is_video_file(file_name):
+    video_formats = [".mp4", ".avi", ".mkv", ".mov", ".wmv", ".flv", ".webm", ".3gp", ".3g2"]
+    return any(file_name.endswith(format) for format in video_formats)
+
+
 result = open("result.txt", "a")
 
 for root, dirs, files in os.walk(directory):
-    print(f"----------------{root}")
-    result.write(f"{root}\n")
-    video_list = [file for file in files if file.endswith(".mp4")]
+    print(f"Directory: {root}")
+    video_list = [file for file in files if is_video_file(file)]
     # Sort files based on extracted numbers, handling all the listed naming conventions
     video_list = sorted(
         video_list,
@@ -48,7 +52,7 @@ for root, dirs, files in os.walk(directory):
     total_time = 0
 
     for video in video_list:
-        if extract_number(video) is not None:  # Process only if a number is successfully extracted
+        if extract_number(video) is not None:
             duration = video_duration(os.path.join(root, video))
             print(f"{convert(total_time)} {video}")
             result.write(f"{convert(total_time)} {video}\n")
