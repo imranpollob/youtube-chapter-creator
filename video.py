@@ -2,9 +2,6 @@ import moviepy.editor
 import os
 import re
 
-# Ask user for directory input
-directory = input("Please enter the directory path: ")
-
 
 def convert(seconds):
     hours = seconds // 3600
@@ -36,26 +33,30 @@ def is_video_file(file_name):
     return any(file_name.endswith(format) for format in video_formats)
 
 
-result = open("result.txt", "a")
+if __name__ == "__main__":
+    video_list = []
+    
+    directory = input("Please enter the directory path: ")
+    
 
-for root, dirs, files in os.walk(directory):
-    print(f"Directory: {root}")
-    video_list = [file for file in files if is_video_file(file)]
-    # Sort files based on extracted numbers, handling all the listed naming conventions
-    video_list = sorted(
-        video_list,
-        key=lambda i: (
-            extract_number(i) if extract_number(i) is not None else float("inf")
-        ),
-    )
+    for root, dirs, files in os.walk(directory):
+        print(f"Directory: {root}")
+        video_list = [file for file in files if is_video_file(file)]
+        # Sort files based on extracted numbers, handling all the listed naming conventions
+        video_list = sorted(
+            video_list,
+            key=lambda i: (
+                extract_number(i) if extract_number(i) is not None else float("inf")
+            ),
+        )
 
-    total_time = 0
 
-    for video in video_list:
-        if extract_number(video) is not None:
-            duration = video_duration(os.path.join(root, video))
-            print(f"{convert(total_time)} {video}")
-            result.write(f"{convert(total_time)} {video}\n")
-            total_time += duration
+    with open("result.txt", "a") as result:
+        total_time = 0
+        for video in video_list:
+            if extract_number(video) is not None:
+                duration = video_duration(os.path.join(root, video))
+                print(f"{convert(total_time)} {video}")
+                result.write(f"{convert(total_time)} {video}\n")
+                total_time += duration
 
-result.close()
