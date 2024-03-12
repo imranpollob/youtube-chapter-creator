@@ -33,12 +33,8 @@ def is_video_file(file_name):
     return any(file_name.endswith(format) for format in video_formats)
 
 
-if __name__ == "__main__":
+def get_video_list(directory):
     video_list = []
-    
-    directory = input("Please enter the directory path: ")
-    
-
     for root, dirs, files in os.walk(directory):
         print(f"Directory: {root}")
         video_list = [file for file in files if is_video_file(file)]
@@ -49,13 +45,18 @@ if __name__ == "__main__":
                 extract_number(i) if extract_number(i) is not None else float("inf")
             ),
         )
+    return video_list
 
+
+if __name__ == "__main__":
+    directory = input("Please enter the directory path: ")
+    video_list = get_video_list(directory)
 
     with open("result.txt", "a") as result:
         total_time = 0
         for video in video_list:
             if extract_number(video) is not None:
-                duration = video_duration(os.path.join(root, video))
+                duration = video_duration(os.path.join(directory, video))
                 print(f"{convert(total_time)} {video}")
                 result.write(f"{convert(total_time)} {video}\n")
                 total_time += duration

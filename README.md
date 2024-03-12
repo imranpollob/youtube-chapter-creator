@@ -63,3 +63,38 @@ The script will generate a `result.txt` file with the YouTube chapters based on 
 - FFmpeg
 
 For any issues related to FFmpeg installation or usage, refer to the [official FFmpeg documentation](https://ffmpeg.org/documentation.html).
+
+
+## Useful softwares
+- To merge videos free and fast use https://github.com/mifi/lossless-cut
+
+
+## Renaming file names
+
+Let's say you have files like the below naming convention.
+```
+lesson1.mp4
+lesson2.mp4
+lesson3.mp4
+```
+
+And you have a text file containing the correct name for each lessons. 
+For example `course-contents.txt` may have the following content.
+
+```
+01 - Intro to JavaScript
+02 - Variable declaration
+03 - Loop
+```
+
+Now, if you want to rename original file names with correct file names defined in the `.txt` file then run the `rename.py` file.
+
+
+1. **Run the script:**
+   ```bash
+   python rename.py
+   ```
+
+2. **Follow the script prompts:**
+   - Enter the directory path containing your video files.
+   - Enter the fie directory of the `.txt` file containing correct file names.
