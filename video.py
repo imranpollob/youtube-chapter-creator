@@ -13,7 +13,7 @@ def convert(seconds):
 
 def video_duration(file_dir):
     video = moviepy.editor.VideoFileClip(file_dir)
-    return int(video.duration)
+    return video.duration
 
 
 def extract_number(file_name):
@@ -49,7 +49,7 @@ def get_video_list(directory):
 
 
 if __name__ == "__main__":
-    directory = input("Please enter the directory path: ")
+    directory = '/Users/imranpollob/Downloads/React Simplified - Beginner (2023)'#input("Please enter the directory path: ")
     video_list = get_video_list(directory)
 
     with open("result.txt", "a") as result:
@@ -57,7 +57,7 @@ if __name__ == "__main__":
         for video in video_list:
             if extract_number(video) is not None:
                 duration = video_duration(os.path.join(directory, video))
-                print(f"{convert(total_time)} {video}")
-                result.write(f"{convert(total_time)} {video}\n")
+                ceiled_total_time = int(total_time)
+                print(f"{convert(ceiled_total_time)} {video}")
+                result.write(f"{convert(ceiled_total_time)} {video}\n")
                 total_time += duration
-
