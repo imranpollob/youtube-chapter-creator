@@ -49,10 +49,10 @@ def get_video_list(directory):
 
 
 if __name__ == "__main__":
-    directory = '/Users/imranpollob/Downloads/React Simplified - Beginner (2023)'#input("Please enter the directory path: ")
+    directory = input("Please enter the directory path: ")
     video_list = get_video_list(directory)
 
-    with open("result.txt", "a") as result:
+    with open("result.txt", "w") as result:
         total_time = 0
         for video in video_list:
             if extract_number(video) is not None:
